@@ -1,5 +1,6 @@
 import React from 'react';
 import {render} from 'react-dom';
+import ChildComponent from './ChildComponent.jsx';
 
 class CountComponent extends React.Component {
   constructor(props) {
@@ -8,6 +9,9 @@ class CountComponent extends React.Component {
     this.state = {
       count: 0
     }
+
+    this.addOne = this.addOne.bind(this);
+    this.removeOne = this.removeOne.bind(this);
   }
 
   addOne() {
@@ -25,9 +29,7 @@ class CountComponent extends React.Component {
   render() {
     return (
       <div>
-        <h1> { this.state.count } </h1>
-        <button onClick={ this.addOne.bind(this) }>+ 1</button>
-        <button onClick={ this.removeOne.bind(this) }>- 1</button>
+        <ChildComponent count={ this.state.count } addOne={ this.addOne } removeOne={ this.removeOne } />
       </div>
     );
   }
